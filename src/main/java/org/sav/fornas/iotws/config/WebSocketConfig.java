@@ -3,6 +3,7 @@ package org.sav.fornas.iotws.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.sav.fornas.iotws.handler.DeviceWebSocketHandler;
+import org.sav.fornas.iotws.service.DeviceService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
@@ -17,6 +18,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
 	private final DeviceAuthInterceptor authInterceptor;
 	private final ObjectMapper objectMapper;
+	private final DeviceService deviceService;
 
 
 	@Override
@@ -28,7 +30,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
 	@Bean
 	public WebSocketHandler deviceHandler() {
-		return new DeviceWebSocketHandler(objectMapper);
+		return new DeviceWebSocketHandler(objectMapper, deviceService);
 	}
 }
 
