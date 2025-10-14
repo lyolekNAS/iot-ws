@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: iot-ws
+    config:
+        import:
+            - configserver:${config.server.url}
+            - vault://
+    cloud:
+        config:
+            profile: ${spring.profiles.active}
+            label: main
+            username: ${CONFIG_SERVER_USER}
+            password: ${CONFIG_SERVER_PASS}
+        vault:
+            uri: ${vault.server.url}
+            scheme: https
+            authentication: approle
+            app-role:
+                role-id: ${IOT_DEV_VAULT_ROLE_ID}
+                secret-id: ${IOT_DEV_VAULT_SECRET_ID}
+            kv:
+                enabled: true
+                backend: secret
+                default-context: ${spring.application.name}
