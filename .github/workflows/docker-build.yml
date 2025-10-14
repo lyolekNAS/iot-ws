@@ -33,6 +33,7 @@ jobs:
             CONFIG_SERVER_USER: ${{ secrets.CONFIG_SERVER_USER }}
             SPRING_PROFILES_ACTIVE: test
             GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+            VAULT_SERVER_URL: ${{ secrets.VAULT_SERVER_URL }}
 
 
 
