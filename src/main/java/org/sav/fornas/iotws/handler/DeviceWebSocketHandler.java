@@ -32,12 +32,12 @@ public class DeviceWebSocketHandler extends TextWebSocketHandler {
 			dto.setId(device.getId());
 			log.debug(">>> DTO from {}: {}", device.getId(), dto);
 
-			boolean isUpdated = deviceService.updateDeviceState(dto);
+			String resp = objectMapper.writeValueAsString(deviceService.updateDeviceState(dto));
 
 
-			log.debug(">>> from {} updated {}", device.getId(), isUpdated);
+			log.debug(">>> from {} updated {}", device.getId(), resp);
 
-//		session.sendMessage(new TextMessage("Received: " + message.getPayload()));
+			session.sendMessage(new TextMessage(objectMapper.writeValueAsString(resp)));
 		} catch (Exception e){
 			log.info("Error:", e);
 		}
