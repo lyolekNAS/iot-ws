@@ -6,17 +6,19 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Setter
 @Getter
 @ToString
-public class DevicePorts {
+public class DevicePortsHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	String name;
+	LocalDateTime onTime;
 	String gpio;
 	Double value;
 	String ioType;

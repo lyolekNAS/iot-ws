@@ -18,11 +18,17 @@ public class DeviceService {
 	@Transactional
 	public boolean updateDeviceState(DeviceDto device){
 		deviceRepository.updateDeviceUpd(device.getId());
+		deviceRepository.copyDeviceStateHistory(device.getId());
 		List<PortDto> ports = device.getPorts();
 		if (ports != null) {
 			for (PortDto port : ports) {
 				if (port.getValue() != null) {
 					deviceRepository.updateDeviceState(
+							device.getId(),
+							port.getGpio(),
+							port.getValue()
+					);
+					deviceRepository.saveDeviceStateHistory(
 							device.getId(),
 							port.getGpio(),
 							port.getValue()
