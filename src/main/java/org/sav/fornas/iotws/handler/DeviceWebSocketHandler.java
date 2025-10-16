@@ -37,7 +37,7 @@ public class DeviceWebSocketHandler extends TextWebSocketHandler {
 
 			log.debug(">>> from {} updated {}", device.getId(), resp);
 
-			session.sendMessage(new TextMessage(objectMapper.writeValueAsString(resp)));
+			session.sendMessage(new TextMessage(resp));
 		} catch (Exception e){
 			log.info("Error:", e);
 		}
