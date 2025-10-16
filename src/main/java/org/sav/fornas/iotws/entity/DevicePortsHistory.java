@@ -19,12 +19,10 @@ public class DevicePortsHistory {
 	int id;
 
 	LocalDateTime onTime;
-	String gpio;
 	Double value;
-	String ioType;
 
 	@ManyToOne
-	@JoinColumn(name = "device_id")
+	@JoinColumn(name = "port_id")
 	@JsonBackReference
-	Device device;
+	DevicePorts port;
 }
