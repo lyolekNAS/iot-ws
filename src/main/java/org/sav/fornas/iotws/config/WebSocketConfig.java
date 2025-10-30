@@ -17,8 +17,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer {
 
 	private final DeviceAuthInterceptor authInterceptor;
-	private final ObjectMapper objectMapper;
-	private final DeviceService deviceService;
+	private final DeviceWebSocketHandler deviceWebSocketHandler;
 
 
 	@Override
@@ -30,7 +29,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
 	@Bean
 	public WebSocketHandler deviceHandler() {
-		return new DeviceWebSocketHandler(objectMapper, deviceService);
+		return deviceWebSocketHandler;
 	}
 }
 
