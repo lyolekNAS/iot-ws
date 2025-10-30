@@ -7,28 +7,32 @@ import org.sav.fornas.dto.iot.DeviceCommand;
 import org.sav.fornas.dto.iot.DeviceView;
 import org.sav.fornas.iotws.config.DeviceSessionManager;
 import org.sav.fornas.iotws.repository.DeviceRepository;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
-@Service
+import java.util.function.Consumer;
+
+@Component
 @RequiredArgsConstructor
 @Slf4j
-public class DeviceCommandConsumer {
+public class PortEventListener {
 
 	private final DeviceSessionManager sessionManager;
 	private final ObjectMapper objectMapper;
 	private final DeviceRepository deviceRepository;
 
-	@KafkaListener(topics = "device-commands", groupId = "iot-ws")
-	public void listen(DeviceCommand command) {
-		log.debug(">>> Received command from Kafka: {}", command);
-		DeviceView resp =  deviceRepository.findProjectedById(command.getDeviceId()).orElseThrow();
+	@Bean
+	public Consumer<DeviceCommand> portValueIn() {
+		return event -> {
+			log.debug(">>> Received event: {}", event);
+			DeviceView resp =  deviceRepository.findProjectedById(event.getDeviceId()).orElseThrow();
 
-		sessionManager.sendToDevice(
-				command.getDeviceId(),
-				resp,
-				objectMapper
-		);
+			sessionManager.sendToDevice(
+					event.getDeviceId(),
+					resp,
+					objectMapper
+			);
+
+		};
 	}
 }
-
