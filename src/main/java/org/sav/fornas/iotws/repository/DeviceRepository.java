@@ -1,6 +1,6 @@
 package org.sav.fornas.iotws.repository;
 
-import org.sav.fornas.dto.iot.DeviceView;
+import org.sav.fornas.iotws.dto.iot.DeviceView;
 import org.sav.fornas.iotws.entity.Device;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

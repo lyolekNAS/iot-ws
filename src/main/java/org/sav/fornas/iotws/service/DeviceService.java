@@ -2,9 +2,9 @@ package org.sav.fornas.iotws.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.sav.fornas.dto.iot.DeviceDto;
-import org.sav.fornas.dto.iot.DeviceView;
-import org.sav.fornas.dto.iot.PortDto;
+import org.sav.fornas.iotws.dto.iot.DeviceDto;
+import org.sav.fornas.iotws.dto.iot.DeviceView;
+import org.sav.fornas.iotws.dto.iot.PortDto;
 import org.sav.fornas.iotws.repository.DeviceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

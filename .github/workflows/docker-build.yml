@@ -32,7 +32,6 @@ jobs:
             CONFIG_SERVER_URL: ${{ secrets.CONFIG_SERVER_URL }}
             CONFIG_SERVER_USER: ${{ secrets.CONFIG_SERVER_USER }}
             SPRING_PROFILES_ACTIVE: test
-            GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
             VAULT_SERVER_URL: ${{ secrets.VAULT_SERVER_URL }}
 
 
@@ -77,7 +76,5 @@ jobs:
         with:
           push: true
           tags: lyolek.synology.me:5555/nasa/iot-ws:latest
-          secrets: | 
-            github_token=${{ secrets.MY_GITHUB_TOKEN }}
           cache-from: type=gha,scope=maven
           cache-to: type=gha,scope=maven,mode=max

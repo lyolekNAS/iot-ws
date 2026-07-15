@@ -3,7 +3,7 @@ package org.sav.fornas.iotws.handler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.sav.fornas.dto.iot.DeviceDto;
+import org.sav.fornas.iotws.dto.iot.DeviceDto;
 import org.sav.fornas.iotws.config.DeviceSessionManager;
 import org.sav.fornas.iotws.entity.Device;
 import org.sav.fornas.iotws.service.DeviceService;
