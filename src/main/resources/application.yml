@@ -12,7 +12,7 @@ spring:
             username: ${CONFIG_SERVER_USER}
             password: ${CONFIG_SERVER_PASS}
         vault:
-            uri: ${VAULT_SERVER_URL}
+            uri: ${VAULT_URL}
             scheme: https
             authentication: approle
             app-role:
