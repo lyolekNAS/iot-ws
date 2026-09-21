@@ -65,8 +65,8 @@ public class DeviceService {
 				if (port.getSchedulers() != null) {
 					for (var scheduler : port.getSchedulers()) {
 						if (scheduler.isEnabled() &&
-							!currentTime.isBefore(scheduler.getStartTime()) &&
-							!currentTime.isAfter(scheduler.getEndTime())) {
+							currentTime.isAfter(scheduler.getStartTime()) &&
+							currentTime.isBefore(scheduler.getEndTime())) {
 							schedulerValue = 1.0;
 							break;
 						}
@@ -74,9 +74,9 @@ public class DeviceService {
 				}
 
 				port.setValue(schedulerValue);
-				deviceRepository.save(device);
 				break;
 			}
 		}
+		deviceRepository.save(device);
 	}
 }
